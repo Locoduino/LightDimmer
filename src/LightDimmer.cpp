@@ -25,7 +25,6 @@ LightDimmer::LightDimmer(const uint8_t inPin, const uint8_t inOn)
     mOn(inOn),
     mBlink(false),
     mState(LD_OFF),
-    mValue(0),
     mRiseTime(250),
     mFallTime(250),
     mOnTime(200),

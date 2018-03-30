@@ -29,7 +29,6 @@ class LightDimmer {
     uint8_t  mOn:1;
     bool     mBlink:1;
     uint8_t  mState;
-    uint8_t  mValue;
     uint16_t mRiseTime;
     uint16_t mFallTime;
     uint16_t mOnTime;
@@ -52,10 +51,10 @@ class LightDimmer {
     void off();
     void startBlink();
     void stopBlink();
-    bool isOn()          { return mState == LD_ON; }
-    bool isOff()         { return mState == LD_OFF; }
-    bool isFading()      { return mState == LD_FALLING; }
-    bool isBrightening() { return mState == LD_RISING; }
+    bool isOn()          { return (mState == LD_ON); }
+    bool isOff()         { return (mState == LD_OFF); }
+    bool isFading()      { return (mState == LD_FALLING); }
+    bool isBrightening() { return (mState == LD_RISING); }
 
     static void update();
 };
