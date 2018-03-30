@@ -1,6 +1,6 @@
 # LightDimmer
 
-A LED dimmer for Arduino
+A LED dimmer library for Arduino
 
 LightDimmer is designed  drive lights of railroad signals.
 One or many LED can be driven simultaneously. For each LED
@@ -28,7 +28,7 @@ LightDimmer crossingLight;
 
 With version 1.1, a LightDimmerSoft soft PWM class has been added. The API
 described below stays the same. Instead of having 256 levels, there are only 32.
-Performances measured on an Arduino Uno shows a PWM frequency of 266 Hz for
+Performances measured on an Arduino Uno show a PWM frequency of 266 Hz for
 12 LED driven simultaneously.
 
 ```
