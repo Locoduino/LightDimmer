@@ -1,6 +1,7 @@
 +---------------------------------------------------------------------------+
 | LightDimmer changelog                                                     |
 +---------------------------------------------------------------------------+
+1.2 New example, updated documentation
 1.1 added soft PWM. pin and level settings have been moved to begin() to
     allow array of objects creation. Still in beta
 1.0 initial beta release
