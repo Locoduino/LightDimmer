@@ -6,7 +6,8 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-LightDimmer	KEYWORD1
+LightDimmer				KEYWORD1
+LightDimmerSoft		KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -25,7 +26,7 @@ begin									KEYWORD2
 isOn									KEYWORD2
 isOff									KEYWORD2
 isFading							KEYWORD2
-isBrightning					KEYWORD2
+isBrightening					KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
