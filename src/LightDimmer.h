@@ -1,7 +1,7 @@
 /*
  * Light Dimmer Library for Arduino
  *
- * Copyright Jean-Luc Béchennec 2015
+ * Copyright Jean-Luc Béchennec 2018
  *
  * This software is distributed under the GNU Public Licence v2 (GPLv2)
  *
@@ -21,15 +21,12 @@
 
 #include "Arduino.h"
 
-class LightDimmer {
+class LightDimmer
+{
   private:
     enum { LD_OFF, LD_ON, LD_RISING, LD_FALLING };
 
-    uint8_t  mPin:6;
-    uint8_t  mOn:1;
-    bool     mBlink:1;
     uint8_t  mState;
-    uint8_t  mValue;
     uint16_t mRiseTime;
     uint16_t mFallTime;
     uint16_t mOnTime;
@@ -40,10 +37,17 @@ class LightDimmer {
     static LightDimmer *sLightList;
 
     void updateState();
+    virtual void updateOutput();
+
+  protected:
+    uint8_t  mValue;
+    uint8_t  mPin:6;
+    bool     mBlink:1;
+    uint8_t  mOff:1;
 
   public:
-    LightDimmer(const uint8_t inPin, const uint8_t inOn);
-    void begin();
+    LightDimmer();
+    void begin(const uint8_t inPin, const uint8_t inOn);
     void setFadingTime(const uint16_t inFallTime);
     void setBrighteningTime(const uint16_t inRiseTime);
     void setOnTime(const uint16_t inOnTime);
@@ -58,6 +62,18 @@ class LightDimmer {
     bool isBrightening() { return mState == LD_RISING; }
 
     static void update();
+};
+
+class LightDimmerSoft : public LightDimmer
+{
+  private:
+    uint8_t mDuty;
+
+    virtual void updateOutput();
+
+  public:
+    LightDimmerSoft() : LightDimmer() {}
+
 };
 
 #endif

@@ -19,11 +19,17 @@ As usual, you have to include it at the beginning of your sketch:
 Then you have to instantiate as many object as lights you want to drive.
 The fist argument is the pin to which the LED is connected and the
 second one can be HIGH or LOW. It is the value to apply to the pin
-to switch the LED on. Of course fading is only possible on PWM pins.
+to switch the LED on. Of course for LightDimmer objects, fading is only
+possible on PWM pins.
 
 ```
 LightDimmer crossingLight(6, HIGH); /* LED on pin 6, switched on when HIGH is applied */
 ```
+
+With version 1.1, a LightDimmerSoft soft class has been added. The API
+described below stays the same. Instead of having 256 levels, there is only 32.
+Performances measured on an Arduino Uno shows a PWM frequency of 266 Hz for
+12 LED driven simultaneously.
 
 The following functions are available:
 
@@ -38,7 +44,7 @@ minimum value. time is in milliseconds
 
 ### setBrighteningTime(time)
 
-Set the time it take to fade the LED from the minumum value to the
+Set the time it take to fade the LED from the minimum value to the
 maximum value. time is in milliseconds
 
 ### setOnTime(time)
