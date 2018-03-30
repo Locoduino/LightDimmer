@@ -27,7 +27,7 @@ LightDimmer crossingLight(6, HIGH); /* LED on pin 6, switched on when HIGH is ap
 ```
 
 With version 1.1, a LightDimmerSoft soft class has been added. The API
-described below stays the same. Instead of having 256 levels, there is only 32.
+described below stays the same. Instead of having 256 levels, there are only 32.
 Performances measured on an Arduino Uno shows a PWM frequency of 266 Hz for
 12 LED driven simultaneously.
 
