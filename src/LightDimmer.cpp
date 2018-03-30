@@ -1,7 +1,7 @@
 /*
  * Light Dimmer Library for Arduino
  *
- * Copyright Jean-Luc Béchennec 2015
+ * Copyright Jean-Luc Béchennec 2018
  *
  * This software is distributed under the GNU Public Licence v2 (GPLv2)
  *
@@ -20,9 +20,9 @@
 
 LightDimmer *LightDimmer::sLightList = NULL;
 
-LightDimmer::LightDimmer(const uint8_t inPin, const uint8_t inOn)
-  : mPin(inPin),
-    mOn(inOn),
+LightDimmer::LightDimmer()
+  : mPin(255),
+    mOff(0),
     mBlink(false),
     mState(LD_OFF),
     mRiseTime(250),
@@ -35,11 +35,13 @@ LightDimmer::LightDimmer(const uint8_t inPin, const uint8_t inOn)
   sLightList = this;
 }
 
-void LightDimmer::begin()
+void LightDimmer::begin(const uint8_t inPin, const uint8_t inOn)
 {
+  mPin = inPin;
+  mOff = !inOn;
   pinMode(mPin, OUTPUT);
   /* At start, le LED is switched off */
-  digitalWrite(mPin, !mOn);
+  digitalWrite(mPin, mOff);
 }
 
 void LightDimmer::setFadingTime(const uint16_t inFallTime)
@@ -113,10 +115,10 @@ void LightDimmer::updateState()
     case LD_RISING:
       if (currentDate < mNextEventDate) {
         uint8_t value = 255 * (currentDate - (mNextEventDate - mRiseTime)) / mRiseTime;
-        analogWrite(mPin, mOn ? value : 255 - value);
+        mValue = mOff ? 255 - value : value;
       }
       else {
-        digitalWrite(mPin, mOn);
+        mValue = mOff ? 0 : 255 ;
         mNextEventDate = currentDate + mPeriod - mOnTime - mRiseTime -mFallTime;
         mState = LD_ON;
       }
@@ -132,15 +134,21 @@ void LightDimmer::updateState()
     case LD_FALLING:
       if (currentDate < mNextEventDate) {
         uint8_t value = 255 * (currentDate - (mNextEventDate - mFallTime)) / mFallTime;
-        analogWrite(mPin, mOn ? 255 - value : value);
+        mValue = mOff ? value : 255 - value;
       }
       else {
-        digitalWrite(mPin, !mOn);
+        mValue = mOff ? 255 : 0;
         mState = LD_OFF;
         mNextEventDate = currentDate + mPeriod - mOnTime - mRiseTime - mFallTime;
       }
       break;
   }
+  updateOutput();
+}
+
+void LightDimmer::updateOutput()
+{
+  analogWrite(mPin, mValue);
 }
 
 static void LightDimmer::update()
@@ -150,4 +158,12 @@ static void LightDimmer::update()
     ld->updateState();
     ld = ld->mNext;
   }
+}
+
+void LightDimmerSoft::updateOutput()
+{
+  mDuty += mOff + (mValue >> 3);       /* Add the value to the duty on 5 bits */
+  uint8_t out = ((mDuty & 0xE0) != 0); /* The output is the carry             */
+  digitalWrite(mPin, out);             /* Set the OUTPUT                      */
+  mDuty &= 0x1F;                       /* Clear the carry                     */
 }

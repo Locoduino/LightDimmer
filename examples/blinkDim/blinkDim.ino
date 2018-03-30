@@ -1,21 +1,19 @@
 /*
- * A very simple example for LightDimmer.
- * 
- * The LED is connected to pin 6 so that a HIGH level on pin 6 switches the LED on
- * 
+ * A very simple example for LightDimmer with a PWM pin.
+ *
  * Blinking is started with the default values:
  * - Brightening time equal to 250ms
  * - Fading time equal to 250ms
  * - On time equal to 200ms
  * - Period equal to 900ms
  */
- 
+
 #include <LightDimmer.h>
 
-LightDimmer myLED (6,HIGH);
+LightDimmer myLED;
 
 void setup() {
-  myLED.begin();
+  myLED.begin(6,HIGH);
   myLED.startBlink();
 }
 
