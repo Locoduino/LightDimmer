@@ -38,6 +38,10 @@ LightDimmerSoft secondCrossingLight;
 By default the period is set to 900ms, the fading and brightening time is set
 to 250ms and the on time is set to 200ms. This correspond to blinking lights of french railway lights.
 
+In ```setup```, you shall call ```begin``` to start each LightDimmer and LightDimmerSoft objects. You can also set the fading and brightening time, the on time and the period for blinking process. See below.
+
+In ```loop```, you shall call ```LightDimmer::update()``` to call the library so that it update the state of each declared object.
+
 The following functions are available:
 
 ### LightDimmer::update()
