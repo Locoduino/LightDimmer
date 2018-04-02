@@ -21,15 +21,16 @@
 LightDimmer *LightDimmer::sLightList = NULL;
 
 LightDimmer::LightDimmer()
-  : mPin(255),
-    mOff(0),
-    mBlink(false),
-    mState(LD_OFF),
+  : mState(LD_OFF),
     mRiseTime(250),
     mFallTime(250),
     mOnTime(200),
     mPeriod(900),
-    mNextEventDate(0)
+    mNextEventDate((uint32_t)0u),
+    mValue((uint8_t)0u),
+    mPin(255),
+    mBlink(false),
+    mOff((uint8_t)0u)
 {
   mNext = sLightList;
   sLightList = this;
