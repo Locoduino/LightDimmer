@@ -36,9 +36,13 @@ LightDimmerSoft secondCrossingLight;
 ```
 
 By default the period is set to 900ms, the fading and brightening time is set
-to 250ms and the on time is set to 200ms.
+to 250ms and the on time is set to 200ms. This correspond to blinking lights of french railway lights.
 
 The following functions are available:
+
+### LightDimmer::update()
+
+LightDimmer::update shall be called in loop to allow the library to update the state of each LED. If the call frequency is not high enough you will get discontinuous update in the fading and brightening process for LightDimmer objects (those using hardware PWM). LightDimmerSoft object (those using software PWM) will flicker. So you shall never use the delay function your sketch.
 
 ### begin(pin, level)
 
