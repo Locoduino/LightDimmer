@@ -1,6 +1,10 @@
 +---------------------------------------------------------------------------+
 | LightDimmer changelog                                                     |
 +---------------------------------------------------------------------------+
+1.2.3 fix forgotten implementation of setOnTime and setPeriod. Moved short
+      implementation to the header.
+1.2.2 fix compilation problem with static used in static method
+      implementation
 1.2.1 Out of beta
 1.2   New example, updated documentation
 1.1   added soft PWM. pin and level settings have been moved to begin() to
