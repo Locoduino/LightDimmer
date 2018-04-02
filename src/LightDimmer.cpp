@@ -151,7 +151,7 @@ void LightDimmer::updateOutput()
   analogWrite(mPin, mValue);
 }
 
-static void LightDimmer::update()
+void LightDimmer::update()
 {
   LightDimmer *ld = sLightList;
   while (ld != NULL) {
