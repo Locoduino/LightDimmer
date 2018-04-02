@@ -44,16 +44,6 @@ void LightDimmer::begin(const uint8_t inPin, const uint8_t inOn)
   digitalWrite(mPin, mOff);
 }
 
-void LightDimmer::setFadingTime(const uint16_t inFallTime)
-{
-  mFallTime = inFallTime;
-}
-
-void LightDimmer::setBrighteningTime(const uint16_t inRiseTime)
-{
-  mRiseTime = inRiseTime;
-}
-
 void LightDimmer::on()
 {
   switch (mState)
@@ -93,11 +83,6 @@ void LightDimmer::startBlink()
   if (mPeriod >= mRiseTime + mOnTime + mFallTime) {
     mBlink = true;
   }
-}
-
-void LightDimmer::stopBlink()
-{
-  mBlink = false;
 }
 
 void LightDimmer::updateState()

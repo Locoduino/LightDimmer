@@ -48,14 +48,14 @@ class LightDimmer
   public:
     LightDimmer();
     void begin(const uint8_t inPin, const uint8_t inOn);
-    void setFadingTime(const uint16_t inFallTime);
-    void setBrighteningTime(const uint16_t inRiseTime);
-    void setOnTime(const uint16_t inOnTime);
-    void setPeriod(const uint16_t inPeriod);
+    void setFadingTime(const uint16_t inFallTime) { mFallTime = inFallTime; };
+    void setBrighteningTime(const uint16_t inRiseTime) { mRiseTime = inRiseTime; };
+    void setOnTime(const uint16_t inOnTime) { mOnTime = inOnTime; };
+    void setPeriod(const uint16_t inPeriod) { mPeriod = inPeriod; };
     void on();
     void off();
     void startBlink();
-    void stopBlink();
+    void stopBlink()     { mBlink = false; };
     bool isOn()          { return (mState == LD_ON); }
     bool isOff()         { return (mState == LD_OFF); }
     bool isFading()      { return (mState == LD_FALLING); }
