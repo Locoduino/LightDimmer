@@ -42,6 +42,12 @@ In ```setup```, you shall call ```begin``` to start each LightDimmer and LightDi
 
 In ```loop```, you shall call ```LightDimmer::update()``` to call the library so that it update the state of each declared object.
 
+### Limitations
+
+Period, on, brightening and fading times are 16 bits integer. So the maximum values of the time settings are 65,535s.
+
+## Functions of LightDimmer
+
 The following functions are available:
 
 ### LightDimmer::update()

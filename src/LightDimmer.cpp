@@ -22,6 +22,7 @@ LightDimmer *LightDimmer::sLightList = NULL;
 
 LightDimmer::LightDimmer()
   : mState(LD_OFF),
+    mMax(255),
     mRiseTime(250),
     mFallTime(250),
     mOnTime(200),
@@ -100,11 +101,11 @@ void LightDimmer::updateState()
       break;
     case LD_RISING:
       if (currentDate < mNextEventDate) {
-        uint8_t value = 255 * (currentDate - (mNextEventDate - mRiseTime)) / mRiseTime;
+        uint8_t value = mMax * (currentDate - (mNextEventDate - mRiseTime)) / mRiseTime;
         mValue = mOff ? 255 - value : value;
       }
       else {
-        mValue = mOff ? 0 : 255 ;
+        mValue = mOff ? 255 - mMax : mMax ;
         mNextEventDate = currentDate + mPeriod - mOnTime - mRiseTime -mFallTime;
         mState = LD_ON;
       }
@@ -119,8 +120,8 @@ void LightDimmer::updateState()
       break;
     case LD_FALLING:
       if (currentDate < mNextEventDate) {
-        uint8_t value = 255 * (currentDate - (mNextEventDate - mFallTime)) / mFallTime;
-        mValue = mOff ? value : 255 - value;
+        uint8_t value = mMax * (currentDate - (mNextEventDate - mFallTime)) / mFallTime;
+        mValue = mOff ? value + 255 - mMax : mMax - value;
       }
       else {
         mValue = mOff ? 255 : 0;

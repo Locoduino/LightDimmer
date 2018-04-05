@@ -27,6 +27,7 @@ class LightDimmer
     enum { LD_OFF, LD_ON, LD_RISING, LD_FALLING };
 
     uint8_t  mState;
+    uint8_t  mMax;
     uint16_t mRiseTime;
     uint16_t mFallTime;
     uint16_t mOnTime;
@@ -48,6 +49,7 @@ class LightDimmer
   public:
     LightDimmer();
     void begin(const uint8_t inPin, const uint8_t inOn);
+    void setMax(const uint8_t inMax) { mMax = inMax; };
     void setFadingTime(const uint16_t inFallTime) { mFallTime = inFallTime; };
     void setBrighteningTime(const uint16_t inRiseTime) { mRiseTime = inRiseTime; };
     void setOnTime(const uint16_t inOnTime) { mOnTime = inOnTime; };
