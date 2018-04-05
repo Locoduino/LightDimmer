@@ -50,8 +50,8 @@ class LightDimmer
     LightDimmer();
     void begin(const uint8_t inPin, const uint8_t inOn);
     void setMax(const uint8_t inMax) { mMax = inMax; };
-    void setFadingTime(const uint16_t inFallTime) { mFallTime = inFallTime; };
-    void setBrighteningTime(const uint16_t inRiseTime) { mRiseTime = inRiseTime; };
+    void setFadingTime(const uint16_t inFallTime) { mFallTime = inFallTime > 0 ? inFallTime : 1; };
+    void setBrighteningTime(const uint16_t inRiseTime) { mRiseTime = inRiseTime > 0 ? inRiseTime : 1; };
     void setOnTime(const uint16_t inOnTime) { mOnTime = inOnTime; };
     void setPeriod(const uint16_t inPeriod) { mPeriod = inPeriod; };
     void on();

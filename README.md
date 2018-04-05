@@ -27,8 +27,8 @@ LightDimmer crossingLight;
 ```
 
 With version 1.1, a LightDimmerSoft soft PWM class has been added. The API
-described below stays the same. Instead of having 256 levels, there are only 32.
-Performances measured on an Arduino Uno show a PWM frequency of 266 Hz for
+described below stays the same. Instead of having 256 levels, there are only 32 which is enough for this kind of application.
+Performances measured on an Arduino Uno show a PWM frequency of 263 Hz for
 12 LED driven simultaneously.
 
 ```
@@ -61,27 +61,27 @@ LED is connected. ```level``` is the logical level, HIGH or LOW, to light up the
 
 ### setMax(max)
 
-max is a 8 bits integer (uint8_t or byte). setMax sets the duty cycle to set the LED on. setMax allows to adjust the brightness of each LED of your signal without changing the resistor.
+```max``` is a 8 bits integer (```uint8_t``` or ```byte```). ```setMax``` sets the duty cycle to set the LED on. setMax allows to adjust the brightness of each LED of your signal without changing the resistor.
 
 ### setFadingTime(time)
 
 Set the time it take to fade the LED from the maximum value to the
-minimum value. time is in milliseconds
+minimum value. time is in milliseconds and ranges from 1 to 65535.
 
 ### setBrighteningTime(time)
 
 Set the time it take to fade the LED from the minimum value to the
-maximum value. time is in milliseconds
+maximum value. time is in milliseconds and ranges from 1 to 65535.
 
 ### setOnTime(time)
 
-Set the time the LED stays on when blinking.
+Set the time the LED stays on when blinking. time is in milliseconds and ranges from 0 to 65535.
 
 ### setPeriod(time)
 
 Set the blinking period. the period should be greater or equal to the sum
 of the brightening time, the on time and the fading time. Otherwise, blinking
-cannot be done.
+cannot be done. time is in milliseconds and ranges from 2 to 65535.
 
 ### on()
 
