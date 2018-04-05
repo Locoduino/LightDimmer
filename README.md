@@ -52,12 +52,16 @@ The following functions are available:
 
 ### LightDimmer::update()
 
-LightDimmer::update shall be called in loop to allow the library to update the state of each LED. If the call frequency is not high enough you will get discontinuous update in the fading and brightening process for LightDimmer objects (those using hardware PWM). LightDimmerSoft object (those using software PWM) will flicker. So you shall never use the delay function your sketch.
+LightDimmer::update shall be called in loop to allow the library to update the state of each LED. If the call frequency is not high enough you will get discontinuous update in the fading and brightening process for LightDimmer objects (those using hardware PWM). LightDimmerSoft object (those using software PWM) will flicker. So you shall never use the delay function in your sketch.
 
 ### begin(pin, level)
 
 begin has to be called in setup for each LED. ```pin``` is the pin to which the
 LED is connected. ```level``` is the logical level, HIGH or LOW, to light up the LED.
+
+### setMax(max)
+
+max is a 8 bits integer (uint8_t or byte). setMax sets the duty cycle to set the LED on. setMax allows to adjust the brightness of each LED of your signal without changing the resistor.
 
 ### setFadingTime(time)
 
