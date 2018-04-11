@@ -101,16 +101,48 @@ Stop the blinking.
 
 ### isOn()
 
-Returns true is the LED is currently on
+Returns true if the LED is currently on
 
 ### isOff()
 
-Returns true is the LED is currently off
+Returns true if the LED is currently off
 
 ### isBrightening()
 
-Returns true is the LED is currently brightening
+Returns true if the LED is currently brightening
 
 ### isFading()
 
-Returns true is the LED is currently fading
+Returns true if the LED is currently fading
+
+### isBlinking()
+
+Returns true if the LED is currently blinking
+
+### maximum()
+
+Returns an ```uint8_t``` which is the maximum duty cycle value as set by ```setMax()```
+
+### fadingTime()
+
+Returns an ```uint16_t``` which is the fading time of the LED
+
+### brighteningTime()
+
+Returns an ```uint16_t``` which is the brightening time of the LED
+
+### onTime()
+
+Returns an ```uint16_t``` which is the on time of the LED
+
+### period()
+
+Returns an ```uint16_t``` which is the period of the LED
+
+### pin()
+
+Returns an ```uint8_t``` which is the pin on which the LED is connected
+
+### value()
+
+Returns an ```uint8_t``` which is the current value of the duty cycle
