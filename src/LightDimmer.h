@@ -57,11 +57,21 @@ class LightDimmer
     void on();
     void off();
     void startBlink();
-    void stopBlink()     { mBlink = false; };
-    bool isOn()          { return (mState == LD_ON); }
-    bool isOff()         { return (mState == LD_OFF); }
-    bool isFading()      { return (mState == LD_FALLING); }
-    bool isBrightening() { return (mState == LD_RISING); }
+    void stopBlink() { mBlink = false; };
+
+    bool isOn()                { return (mState == LD_ON); }
+    bool isOff()               { return (mState == LD_OFF); }
+    bool isFading()            { return (mState == LD_FALLING); }
+    bool isBrightening()       { return (mState == LD_RISING); }
+    bool isBlinking()          { return mBlink; }
+    uint8_t maximum()          { return mMax; }
+    uint16_t fadingTime()      { return mFallTime; }
+    uint16_t brighteningTime() { return mRiseTime; }
+    uint16_t onTime()          { return mOnTime; }
+    uint16_t period()          { return mPeriod; }
+    uint8_t pin()              { return mPin; }
+    uint8_t value()            { return mValue; }
+
 
     static void update();
 };
