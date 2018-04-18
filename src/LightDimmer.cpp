@@ -139,7 +139,7 @@ void LightDimmer::updateOutput()
   analogWrite(mPin, mValue);
 }
 
-inline void LightDimmer::updateAll()
+void LightDimmer::update()
 {
   LightDimmer *ld = sLightList;
   while (ld != NULL) {
@@ -148,18 +148,12 @@ inline void LightDimmer::updateAll()
   }
 }
 
-inline void LightDimmer::updateCurrent()
-{
-  if (sCurrent == NULL) sCurrent = sLightList;
-  sCurrent->updateState();
-  sCurrent = sCurrent->mNext;
-}
-
 void LightDimmer::update(const uint8_t inHowMany)
 {
-  if (inHowMany == 0) updateAll();
-  else {
-    for (uint8_t i = 0; i < inHowMany; i++) updateCurrent();
+  for (uint8_t i = 0; i < inHowMany; i++) {
+    if (sCurrent == NULL) sCurrent = sLightList;
+    sCurrent->updateState();
+    sCurrent = sCurrent->mNext;
   }
 }
 
