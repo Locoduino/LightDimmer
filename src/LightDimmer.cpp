@@ -19,6 +19,7 @@
 #include <LightDimmer.h>
 
 LightDimmer *LightDimmer::sLightList = NULL;
+LightDimmer *LightDimmer::sCurrent = NULL;
 
 LightDimmer::LightDimmer()
   : mState(LD_OFF),
@@ -138,12 +139,27 @@ void LightDimmer::updateOutput()
   analogWrite(mPin, mValue);
 }
 
-void LightDimmer::update()
+inline void LightDimmer::updateAll()
 {
   LightDimmer *ld = sLightList;
   while (ld != NULL) {
     ld->updateState();
     ld = ld->mNext;
+  }
+}
+
+inline void LightDimmer::updateCurrent()
+{
+  if (sCurrent == NULL) sCurrent = sLightList;
+  sCurrent->updateState();
+  sCurrent = sCurrent->mNext;
+}
+
+void LightDimmer::update(const uint8_t inHowMany)
+{
+  if (inHowMany == 0) updateAll();
+  else {
+    for (uint8_t i = 0; i < inHowMany; i++) updateCurrent();
   }
 }
 

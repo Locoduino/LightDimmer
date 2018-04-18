@@ -36,9 +36,12 @@ class LightDimmer
 
     LightDimmer *mNext;
     static LightDimmer *sLightList;
+    static LightDimmer *sCurrent;
 
     void updateState();
     virtual void updateOutput();
+    static void updateAll();
+    static void updateCurrent();
 
   protected:
     uint8_t  mValue;
@@ -72,8 +75,7 @@ class LightDimmer
     uint8_t pin()              { return mPin; }
     uint8_t value()            { return mValue; }
 
-
-    static void update();
+    static void update(const uint8_t inHowMany = 0);
 };
 
 class LightDimmerSoft : public LightDimmer
