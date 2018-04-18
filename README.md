@@ -52,7 +52,11 @@ The following functions are available:
 
 ### LightDimmer::update()
 
-LightDimmer::update shall be called in loop to allow the library to update the state of each LED. If the call frequency is not high enough you will get discontinuous update in the fading and brightening process for LightDimmer objects (those using hardware PWM). LightDimmerSoft object (those using software PWM) will flicker. So you shall never use the delay function in your sketch.
+LightDimmer::update shall be called in loop to allow the library to update the state of each LED. If the call frequency is not high enough you will get discontinuous update in the fading and brightening process for LightDimmer objects (those using hardware PWM). LightDimmerSoft object (those using software PWM) will flicker. So you shall never use the delay function in your sketch. 
+
+### LightDimmer::update(howMany)
+
+As an option, update can take as argument the number of objects to update. This allows you to more finely interlace LightDimmer's work and the rest of your sketch. Passing a number of objects greater than the number of objects declared has no particular effect other than updating several times and unnecessarily the same object.
 
 ### begin(pin, level)
 
