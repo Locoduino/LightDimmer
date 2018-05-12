@@ -2,7 +2,7 @@
 
 A LED dimmer library for Arduino
 
-LightDimmer is designed  drive lights of railroad signals.
+LightDimmer is designed to drive lights of railroad signals.
 One or many LED can be driven simultaneously. For each LED
 the time needed to switch on the light and the time needed
 to switch it off can be specified. The light can also blink
