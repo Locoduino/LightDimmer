@@ -52,7 +52,7 @@ The following functions are available:
 
 ### LightDimmer::update()
 
-LightDimmer::update shall be called in loop to allow the library to update the state of each LED. If the call frequency is not high enough you will get discontinuous update in the fading and brightening process for LightDimmer objects (those using hardware PWM). LightDimmerSoft object (those using software PWM) will flicker. So you shall never use the delay function in your sketch. 
+LightDimmer::update shall be called in loop to allow the library to update the state of each LED. If the call frequency is not high enough you will get discontinuous update in the fading and brightening process for LightDimmer objects (those using hardware PWM). LightDimmerSoft object (those using software PWM) will flicker. So you shall never use the delay function in your sketch.
 
 ### LightDimmer::update(howMany)
 
@@ -86,6 +86,10 @@ Set the time the LED stays on when blinking. time is in milliseconds and ranges 
 Set the blinking period. the period should be greater or equal to the sum
 of the brightening time, the on time and the fading time. Otherwise, blinking
 cannot be done. time is in milliseconds and ranges from 2 to 65535.
+
+### setupMax(max)
+
+```max``` is a 8 bits integer (```uint8_t``` or ```byte```). ```setupMax``` turns the output on, sets the current value on and sets the duty cycle to set the LED on. setupMax allows to live adjust the brightness of each LED of your signal without changing the resistor.
 
 ### on()
 

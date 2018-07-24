@@ -47,6 +47,12 @@ void LightDimmer::begin(const uint8_t inPin, const uint8_t inOn)
   digitalWrite(mPin, mOff);
 }
 
+void LightDimmer::setupMax(const uint8_t inMax)
+{
+  mState = LD_ON;
+  mValue = mMax = inMax;
+}
+
 void LightDimmer::on()
 {
   switch (mState)
@@ -88,6 +94,10 @@ void LightDimmer::startBlink()
   }
 }
 
+/*
+ * LightDimmer::updateState implements the state machine associated to each
+ * LED.
+ */
 void LightDimmer::updateState()
 {
   uint32_t currentDate = millis();
@@ -139,6 +149,14 @@ void LightDimmer::updateOutput()
   analogWrite(mPin, mValue);
 }
 
+/*
+ * LightDimmer::update shall be called in loop to allow the library to update
+ * the state of each LED. If the call frequency is not high enough you will
+ * get discontinuous update in the fading and brightening process for
+ * LightDimmer objects (those using hardware PWM). LightDimmerSoft object
+ * (those using software PWM) will flicker. So you shall never use the delay
+ * function in your sketch.
+ */
 void LightDimmer::update()
 {
   LightDimmer *ld = sLightList;
@@ -148,6 +166,13 @@ void LightDimmer::update()
   }
 }
 
+/*
+ * As an option, update can take as argument the number of objects to update.
+ * This allows you to more finely interlace LightDimmer's work and the rest
+ * of your sketch. Passing a number of objects greater than the number of
+ * objects declared has no particular effect other than updating several times
+ * and unnecessarily the same object.
+ */
 void LightDimmer::update(const uint8_t inHowMany)
 {
   for (uint8_t i = 0; i < inHowMany; i++) {
@@ -157,6 +182,10 @@ void LightDimmer::update(const uint8_t inHowMany)
   }
 }
 
+/*
+ * LightDimmerSoft::updateOutput compute the state of the output according to
+ * the value of the PWM
+ */
 void LightDimmerSoft::updateOutput()
 {
   mDuty += mOff + (mValue >> 3);       /* Add the value to the duty on 5 bits */

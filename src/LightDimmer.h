@@ -55,6 +55,7 @@ class LightDimmer
     void setBrighteningTime(const uint16_t inRiseTime) { mRiseTime = inRiseTime > 0 ? inRiseTime : 1; };
     void setOnTime(const uint16_t inOnTime) { mOnTime = inOnTime; };
     void setPeriod(const uint16_t inPeriod) { mPeriod = inPeriod; };
+    void setupMax(const uint8_t inMax);
     void on();
     void off();
     void startBlink();

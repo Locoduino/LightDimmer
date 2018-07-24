@@ -15,6 +15,7 @@ LightDimmerSoft	KEYWORD1
 
 setPeriod	KEYWORD2
 setMax	KEYWORD2
+setupMax	KEYWORD2
 setOnTime	KEYWORD2
 setFadingTime	KEYWORD2
 setBrighteningTime	KEYWORD2
