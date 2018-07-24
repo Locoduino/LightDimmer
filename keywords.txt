@@ -6,28 +6,28 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-LightDimmer				KEYWORD1
-LightDimmerSoft		KEYWORD1
+LightDimmer	KEYWORD1
+LightDimmerSoft	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-setPeriod							KEYWORD2
-setMax								KEYWORD2
-setOnTime							KEYWORD2
-setFadingTime					KEYWORD2
-setBrighteningTime		KEYWORD2
-on										KEYWORD2
-off										KEYWORD2
-startBlink						KEYWORD2
-stopBlink							KEYWORD2
-update								KEYWORD2
-begin									KEYWORD2
-isOn									KEYWORD2
-isOff									KEYWORD2
-isFading							KEYWORD2
-isBrightening					KEYWORD2
+setPeriod	KEYWORD2
+setMax	KEYWORD2
+setOnTime	KEYWORD2
+setFadingTime	KEYWORD2
+setBrighteningTime	KEYWORD2
+on	KEYWORD2
+off	KEYWORD2
+startBlink	KEYWORD2
+stopBlink	KEYWORD2
+update	KEYWORD2
+begin	KEYWORD2
+isOn	KEYWORD2
+isOff	KEYWORD2
+isFading	KEYWORD2
+isBrightening	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
