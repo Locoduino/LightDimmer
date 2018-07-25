@@ -50,6 +50,7 @@ void LightDimmer::begin(const uint8_t inPin, const uint8_t inOn)
 void LightDimmer::setupMax(const uint8_t inMax)
 {
   mState = LD_ON;
+  mBlink = false;
   mValue = mMax = inMax;
 }
 
