@@ -44,7 +44,7 @@ In ```loop```, you shall call ```LightDimmer::update()``` to call the library so
 
 ### Limitations
 
-Period, on, brightening and fading times are 16 bits integer. So the maximum values of the time settings are 65,535s.
+Period, on, brightening and fading times are 16 bits integer. So the maximum values of the time settings are 65.535s.
 
 ## Functions of LightDimmer
 
