@@ -1,4 +1,5 @@
-# LightDimmer
+# LightDimmer [![Build Status](https://travis-ci.org/Locoduino/LightDimmer.svg?branch=master)](https://travis-ci.org/Locoduino/LightDimmer)
+
 
 A LED dimmer library for Arduino
 
@@ -154,3 +155,14 @@ Returns an ```uint8_t``` which is the pin on which the LED is connected
 ### value()
 
 Returns an ```uint8_t``` which is the current value of the duty cycle
+
+## Note about Travis CI
+
+The LightDimmer Library examples are built on Travis CI for the following boards:
+
+- Arduino Leonardo
+- Arduino Uno
+- Arduino Mega 2560
+- Arduino Zero
+- Arduino Due
+- ESP8266
